@@ -1,0 +1,14 @@
+{
+    "manifest_version": 2,
+    "name": "Vaaniy TTS: A Local Text-to-Speech Reader",
+    "version": "1.0",
+    "description": "Send selected text to Vaaniy for text-to-speech processing.",
+    "permissions": ["contextMenus", "activeTab", "http://www.vaaniy.com/"],
+    "background": {
+        "scripts": ["background.js"]
+    },
+    "icons": {
+        "48": "icons/icon-48.png",
+        "96": "icons/icon-96.png"
+    }
+}

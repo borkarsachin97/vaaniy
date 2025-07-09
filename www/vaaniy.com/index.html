@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Vaaniy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+        .container {
+            text-align: center;
+            max-width: 800px;
+            padding: 40px;
+            background: #1e1e1e;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+        }
+        .logo {
+            margin-bottom: 20px;
+        }
+        .logo img {
+            width: 100px;
+            height: auto;
+        }
+        h1 {
+            font-size: 3em;
+            margin: 0 0 10px;
+            font-family: 'Pacifico', cursive;
+            letter-spacing: 1px;
+            color: #00ffcc;
+        }
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin: 15px 0 25px;
+            color: #cccccc;
+        }
+        .input-container {
+            margin: 20px 0;
+        }
+        textarea {
+            width: 90%;
+            max-width: 700px;
+            height: 200px;
+            padding: 12px;
+            font-size: 1em;
+            border: 2px solid #00ffcc;
+            border-radius: 10px;
+            background: #121212;
+            color: #ffffff;
+            outline: none;
+            resize: none;
+        }
+        textarea::placeholder {
+            color: #666666;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        .button {
+            display: inline-block;
+            color: #ffffff;
+            background: #4caf50;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 1.1em;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            margin: 5px;
+        }
+        .button:hover {
+            background: #45a049;
+        }
+        .button.reset {
+            background: #f44336;
+        }
+        .button.reset:hover {
+            background: #d32f2f;
+        }
+        #responseArea {
+            margin-top: 20px;
+            padding: 10px;
+            font-size: 1em;
+            background: #282828;
+            border-radius: 5px;
+            color: #00ffcc;
+            display: none;
+        }
+        footer {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #888888;
+        }
+        footer a {
+            color: #00ffcc;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="logo-placeholder.png" alt="Vaaniy Logo" />
+        </div>
+        <h1>Welcome to Vaaniy!</h1>
+        <p>Your personal offline TTS assistant. Designed for accessibility and ease of use.</p>
+        <div class="input-container">
+            <textarea id="textInput" placeholder="Type your text here..." aria-label="Input your text to be spoken"></textarea>
+        </div>
+        <div class="buttons">
+            <button class="button" id="speakButton">Speak</button>
+            <button class="button reset" id="resetButton">Reset</button>
+        </div>
+        <div id="responseArea"></div>
+        <footer>
+            <p>Created with ❤️ by <a href="#">Vixxkigoli</a>. Powered by <a href="http://www.vaaniy.com:8080/" target="_blank">Vaaniy TTS</a>.</p>
+        </footer>
+    </div>
+    <script>
+        // JavaScript to handle Speak and Reset buttons
+        document.getElementById("speakButton").addEventListener("click", function () {
+            const text = document.getElementById("textInput").value.trim();
+            const responseArea = document.getElementById("responseArea");
+
+            if (text) {
+                fetch("http://vaaniy.com:8080/vaaniy_api.php", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    },
+                    body: `text=${encodeURIComponent(text)}`
+                })
+                .then(response => response.text())
+                .then(data => {
+                    responseArea.style.display = "block";
+                    responseArea.textContent = `Response: ${data}`;
+                })
+                .catch(error => {
+                    responseArea.style.display = "block";
+                    responseArea.textContent = "Error: Could not send the text.";
+                });
+            } else {
+                responseArea.style.display = "block";
+                responseArea.textContent = "Error: Please enter some text to speak.";
+            }
+        });
+
+        document.getElementById("resetButton").addEventListener("click", function () {
+            document.getElementById("textInput").value = "";
+            const responseArea = document.getElementById("responseArea");
+            responseArea.style.display = "none";
+            responseArea.textContent = "";
+        });
+    </script>
+</body>
+</html>
