@@ -1,6 +1,6 @@
 
 <p align="center">
-  <img src="assets/vaaniy-logo.svg" alt="Vaaniy Logo" width="200"/>
+  <img src="assets/vaaniy-logo.svg" alt="Vaaniy Logo" width="300"/>
 </p>
 
 # 📣 Vaaniy — Speak Your Linux
@@ -38,6 +38,11 @@ It works alongside your screen reader, or as a lightweight alternative for on-de
 - Tested on:
   - Debian 12 GNOME
   - Debian 11 MATE
+- To install prerequisite
+```bash
+sudo apt update
+sudo apt install pipewire inotify-tools
+```
 
 ---
 
@@ -47,7 +52,7 @@ It works alongside your screen reader, or as a lightweight alternative for on-de
 - Download the ZIP from GitHub, or  
 - Clone it:
   ```bash
-  git clone <YOUR-REPO-URL>
+  git clone https://github.com/borkarsachin97/vaaniy
   ```
 
 2️⃣ Unpack (if using ZIP).
@@ -68,7 +73,7 @@ This makes it easy to kill if needed.
 2️⃣ Open as many `tabs` as you need — one for each language:
 
 - For English + Hindi:
-
+![Terminal](assets/terminal_en.png "Terminal")
 ```bash
 ./server/startup_en.sh
 ./server/startup_hi.sh
@@ -92,6 +97,8 @@ Your TTS “server” is now running!
 - **Command**:
 
   - For Hindi + English:
+
+![Shortcut Setup](assets/add_sc.png "Shortcut Setup")
 
 ```bash
 /home/username/applications/vaaniy/accessibility/txt-rec-en_hi.sh
@@ -120,7 +127,7 @@ More ready-to-use profiles will be added in future releases.
 ---
 ## 🌐 Local Website
 Vaaniy also includes a tiny Apache-based website, which you can access locally inside the `www` folder and local website:
-
+![Local Site](assets/localSite.png "Local Site")
 👉 `http://www.vaaniy.com:8080/`
 
 ---
@@ -128,7 +135,26 @@ Vaaniy also includes a tiny Apache-based website, which you can access locally i
 Vaaniy also supports Chrome, Firefox, and Edge extensions (beta) and you can find it inside `extension` folder.
 
 These may need manual edits for your system and user groups — detailed instructions may coming soon!
+![Browser Extensions](assets/ext_ss.png "Browser Extensions")
+---
 
+## Tips:
+1. If you want to change the **speed of the voice**, you can adjust the `SAMPLE_RATE` value in your script:
+- **Lower sample rate** (e.g. `17000`, `22000`) → slower, deeper voice.
+- **Higher sample rate** (e.g. `25000`, `26000`) → faster, brighter voice.
+- Script folder
+```bash
+~/applications/vaaniy/server/*sh
+```
+
+2. Dont misplace the files
+- The folders are preconfigured, so if you run server from somewhere else, sript won't be able find files
+- Its mendatory to place file or project in 
+```
+~/applications/vaaniy
+OR
+/home/username/applications/vaaniy/
+```
 ---
 ## ⚡ Current Status
 - ✅ Fully working on Debian 12 GNOME and Debian 11 MATE.
