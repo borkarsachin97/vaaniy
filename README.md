@@ -3,7 +3,7 @@
   <img src="assets/vaaniy-logo.svg" alt="Vaaniy Logo" width="300"/>
 </p>
 
-# 📣 Vaaniy — Speak Your Linux
+# 📣 Vaaniy/वाणी — Speak Your Linux
 
 **Vaaniy** is a simple, script-based solution to deeply integrate [Piper TTS](https://github.com/rhasspy/piper) into your Linux desktop.  
 Select any text, press `CTRL+`\` (`Ctrl + backtick/backqoute`), and Vaaniy will instantly speak it — in **English**, **Hindi**, or **Malayalam**.  
@@ -135,7 +135,9 @@ Vaaniy also includes a tiny Apache-based website, which you can access locally i
 Vaaniy also supports Chrome, Firefox, and Edge extensions (beta) and you can find it inside `extension` folder.
 
 These may need manual edits for your system and user groups — detailed instructions may coming soon!
+
 ![Browser Extensions](assets/ext_ss.png "Browser Extensions")
+
 ---
 
 ## Tips:
